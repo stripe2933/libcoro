@@ -73,7 +73,7 @@ struct awaitable_traits
 };
 
 template<awaitable awaitable>
-static auto get_awaiter(awaitable&& value)
+auto get_awaiter(awaitable&& value)
 {
     if constexpr (member_co_await_awaitable<awaitable>)
         return std::forward<awaitable>(value).operator co_await();

@@ -440,10 +440,10 @@ private:
 template<
     concepts::awaitable awaitable,
     typename return_type = typename concepts::awaitable_traits<awaitable&&>::awaiter_return_type>
-static auto make_when_all_task(awaitable a) -> when_all_task<return_type> __ATTRIBUTE__(used);
+auto make_when_all_task(awaitable a) -> when_all_task<return_type> __ATTRIBUTE__(used);
 
 template<concepts::awaitable awaitable, typename return_type>
-static auto make_when_all_task(awaitable a) -> when_all_task<return_type>
+auto make_when_all_task(awaitable a) -> when_all_task<return_type>
 {
     if constexpr (std::is_void_v<return_type>)
     {

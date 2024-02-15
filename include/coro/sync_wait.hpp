@@ -285,10 +285,10 @@ private:
 template<
     concepts::awaitable awaitable_type,
     typename return_type = concepts::awaitable_traits<awaitable_type>::awaiter_return_type>
-static auto make_sync_wait_task(awaitable_type&& a) -> sync_wait_task<return_type> __ATTRIBUTE__(used);
+auto make_sync_wait_task(awaitable_type&& a) -> sync_wait_task<return_type> __ATTRIBUTE__(used);
 
 template<concepts::awaitable awaitable_type, typename return_type>
-static auto make_sync_wait_task(awaitable_type&& a) -> sync_wait_task<return_type>
+auto make_sync_wait_task(awaitable_type&& a) -> sync_wait_task<return_type>
 {
     if constexpr (std::is_void_v<return_type>)
     {
